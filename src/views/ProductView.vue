@@ -39,8 +39,26 @@
                     </div>
 
 
-                    <div class="parameters">
+                    <div class="parameters mt-8">
+                        <div class="parameter-title">
+                            <span class="text-h5">Choose color</span>
+                        </div>
+                        <div class="parameter-button">
+                            <v-btn class="rounded-pill pa-5 px-5 mt-5 align-content-center" elevation="0">Red</v-btn>
+                            <v-btn class="rounded-pill pa-5 px-5 mt-5 align-content-center" elevation="0">Blue</v-btn>
+                            <v-btn class="rounded-pill pa-5 px-5 mt-5 align-content-center" elevation="0">Green</v-btn>
+                        </div>
+                    </div>
 
+                    <div class="action mt-md-10">
+                        <div class="group-button">
+                            <v-btn class="pa-7 mt-5 mb-5 align-content-center rounded-pill px-16 bg-primary"
+                                elevation="0">Buy Now</v-btn>
+                            <v-btn class="pa-7 mt-5 mb-5 mx-5 align-content-center  rounded-pill px-16 cart-btn"
+                                elevation="0">Add
+                                to
+                                Cart</v-btn>
+                        </div>
                     </div>
                 </v-col>
             </v-row>
@@ -68,5 +86,9 @@ export default {
 
 .sub-main img {
     width: 30%;
+}
+
+.cart-btn {
+    border: 2px solid var(--main-color);
 }
 </style>

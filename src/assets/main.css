@@ -5,3 +5,10 @@
 
 
 
+:root{
+    --main-color:#4C7A60;
+}
+
+*{
+    font-family: 'Poppins',sans-serif;
+}

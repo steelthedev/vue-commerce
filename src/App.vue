@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <NavBar />
+      <NavBar v-if="!$route.meta.hideNavbar" />
       <router-view />
     </v-main>
   </v-app>
@@ -14,6 +14,12 @@ export default {
     NavBar
   },
   name: 'App',
+  computed: {
+    isDashboardView() {
+      return this.$route.name === 'dashboard';
+    }
+
+  },
 
   data: () => ({
     //
