@@ -9,6 +9,7 @@ const getUtils = () =>{
         .get('products/category/get-all')
         .then(res =>{
             categories.value = res.data
+            console.log(res.data)
         })
         .catch(err =>{
             console.log(err)

@@ -4,6 +4,7 @@ import ProductView from '../views/ProductView.vue'
 import DashboardView from '../views/Dashboard/DashboardView.vue'
 import DashboardProductView from '../views/Dashboard/DashboardProductView.vue'
 import AddProductView from '../views/Dashboard/AddProductView.vue'
+import LoginView from '../views/LoginView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path:'/accounts/dashboard/products/create',
       name:'dashboard-add-product',
       component:AddProductView
+    },
+    {
+      path:'/login',
+      name:'login',
+      component:LoginView
     },
     
     {

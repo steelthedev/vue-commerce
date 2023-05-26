@@ -26,7 +26,7 @@
           <h1 class=" text-h4 font-weight-medium">Trendy Products </h1>
         </div>
       </v-row>
-      <ProductList />
+      <ProductList :products="products.slice(0, 10)"/>
 
       <v-row>
         <div class="cat-title mt-10">
@@ -40,22 +40,23 @@
           <h1 class=" text-h4 font-weight-medium">New Arrivals </h1>
         </div>
       </v-row>
-      <ProductList />
+      <ProductList  :products="products" />
 
       <v-row>
         <div class="cat-title mt-4">
           <h1 class=" text-h4 font-weight-medium">Collections </h1>
         </div>
       </v-row>
-      <ProductList />
+      <ProductList  :products="products"/>
     </v-container>
   </section>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted } from 'vue';
 import ProductList from '../components/ProductList.vue';
 import BrandList from '../components/BrandList.vue';
+import Products from '../composables/products'
 // Components
 
 
@@ -66,6 +67,15 @@ export default defineComponent({
     ProductList,
     BrandList
   },
+  setup(){
+
+    onMounted(()=>{
+      getProducts()
+    })
+    const {products,getProducts} = Products()
+
+    return {products}
+  }
 });
 </script>
 <style scoped>

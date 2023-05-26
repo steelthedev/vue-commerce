@@ -1,3 +1,4 @@
+import axios from "axios"
 import { ref } from "vue"
 
 const Products = () =>{
@@ -14,6 +15,7 @@ const Products = () =>{
                 console.log(
                     response.data
                 )
+                products.value = response.data
             })
             .catch(err =>{
                 console.log(
@@ -22,4 +24,8 @@ const Products = () =>{
             })
 
     }
+
+    return {products,getProducts}
 }
+
+export default Products;
