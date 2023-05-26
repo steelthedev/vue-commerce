@@ -23,6 +23,7 @@
                      persistent-hint
                     return-object
                     single-line
+                    variant="underlined"
                  
                     label="Choose Categories"
                     
@@ -31,6 +32,9 @@
                     </v-select>
                          
                   </v-col>
+                   <v-col cols="12">
+                     <v-textarea v-model="description" label="Description" variant="underlined" color="primary" class="form-control"></v-textarea>
+                </v-col>
 
                     <v-col md="6" lg="6" cols="12">
                          <v-text-field v-model="price" label="Price" variant="underlined" color="primary" class="form-control"></v-text-field>
@@ -100,7 +104,7 @@ export default {
         }
     },
     setup() {
-        const {category, title,subImages,mainImage,price,submitForm,handleMainImagesUpload,handleSubImagesUpload} = addProduct()
+        const {category, title,subImages,mainImage,price,description,submitForm,handleMainImagesUpload,handleSubImagesUpload} = addProduct()
         const {getCategories, categories} = getUtils()
         
         onMounted(()=>{
@@ -118,7 +122,8 @@ export default {
             price,
             handleMainImagesUpload,
             handleSubImagesUpload,
-            submitForm
+            submitForm,
+            description
 
         }
     },

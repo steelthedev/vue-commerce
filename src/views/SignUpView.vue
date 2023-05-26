@@ -4,18 +4,23 @@
             <div class="form">
    
              
-                <v-form class="px-3" ref="form" @submit.prevent="submit" v-model="valid" lazy-validation>
+                <v-form class="px-3" ref="form" @submit.prevent="submitReg" v-model="valid" lazy-validation>
                 <v-row justify="center">
                     <v-col cols="12" sm="8" md="8" lg="6" class="form-column">
                         <v-card class="card my-4"  elevation="5"  >
                             <v-card-title class="text-h6 font-weight-bold mb-2 text-primary">
-                            Login
+                            Sign Up
                             </v-card-title>
                      
                     
                             
                             <v-text-field :rules="inputRules" color="primary" label="Email" type="email" class="input"  v-model="email" variant="underlined"></v-text-field>
 
+                            <v-text-field :rules="inputRules" color="primary" label="First Name" class="input"  v-model="first_name" variant="underlined"></v-text-field>
+
+                            <v-text-field :rules="inputRules" color="primary" label="Last Name"  class="input"  v-model="last_name" variant="underlined"></v-text-field>
+
+                            <v-text-field :rules="inputRules" color="primary" label="Phone"  class="input"  v-model="phone" variant="underlined"></v-text-field>
 
 
                             <v-text-field :rules="inputRules" color="primary" label="Password" v-model="password" variant="underlined"></v-text-field>
@@ -52,7 +57,7 @@ export default {
     setup() {
       
    
-        const {inputRules, form, valid, submit,email,password} = Auth()
+        const {inputRules, form, valid, submitReg,email,password,phone,last_name,first_name} = Auth()
 
         return {
             email, 
@@ -60,7 +65,10 @@ export default {
             inputRules,
             form,
             valid,
-            submit
+            submitReg,
+            last_name,
+            first_name,
+            phone
         }
 
     },

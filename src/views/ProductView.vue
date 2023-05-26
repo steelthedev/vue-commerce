@@ -4,23 +4,19 @@
             <v-row class="justify-content-center">
                 <v-col md="6" lg="6" class="text-center">
                     <div class="main-image">
-                        <img src="../assets/images/headset-1.png" class="main" alt="">
+                        <img :src="'http://127.0.0.1:8000/' + product.main_image" class="main" alt="">
                     </div>
                     <div class="sub-images  mt-5 pa-4">
-                        <v-row class="justify-content-center text-center">
+                        <v-row class="justify-content-center text-center" justify="center">
 
 
-                            <v-col md="3" lg="6" class="text-center">
+                            <v-col md="3" lg="6" class="text-center" v-for="image in product.sub_images" :key="image.id">
                                 <div class="sub-main">
-                                    <img src="../assets/images/headset-3.png">
+                                    <img :src="'http://127.0.0.1:8000/' + image">
                                 </div>
                             </v-col>
 
-                            <v-col md="3" lg="6" class="text-center">
-                                <div class="sub-main">
-                                    <img src="../assets/images/headset-4.png">
-                                </div>
-                            </v-col>
+                        
 
 
 
@@ -30,12 +26,12 @@
                 </v-col>
                 <v-col md="6" lg="6">
                     <div class="product-title">
-                        <h1 class="text-h2 mb-2">Headset Max</h1>
-                        <span class="text-h6 font-weight-light">Table with purifier, stained veneer/black</span>
+                        <h1 class="text-h2 mb-2">{{product.title}}</h1>
+                        <span class="text-h6 font-weight-light">{{product.description}}</span>
                     </div>
                     <div class="price mt-10">
                         <span class="text-h5">Price:</span>
-                        <h2 class="text-h4 font-weight-bold ">#256.0</h2>
+                        <h2 class="text-h4 font-weight-bold ">#{{product.price}}</h2>
                     </div>
 
 
@@ -66,10 +62,17 @@
     </section>
 </template>
 <script>
+import { onMounted } from 'vue'
+import Products from '../composables/products'
 
 export default {
     setup() {
+        onMounted(()=>{
+            getSingleProduct()
+        })
+        const {getSingleProduct,product} = Products()
 
+        return {product}
     }
 }
 

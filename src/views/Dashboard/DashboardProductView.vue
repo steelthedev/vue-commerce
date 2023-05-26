@@ -39,6 +39,7 @@ import SideBar from '../../components/Dashboard/SideBar.vue'
 import { defineComponent } from 'vue';
 import ProductList from '../../components/Dashboard/ProductList.vue';
 import addProduct from '../../composables/Dashboard/addproduct.js'
+import Products from '../../composables/products';
 
 
 // Components
@@ -62,7 +63,7 @@ export default defineComponent({
         }
     },
     setup(){
-
+     
    
     }
 });

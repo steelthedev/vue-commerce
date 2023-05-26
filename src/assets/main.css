@@ -12,3 +12,8 @@
 *{
     font-family: 'Poppins',sans-serif;
 }
+
+.link{
+    color: #000;
+    text-decoration: none;
+}

@@ -10,6 +10,12 @@ const Auth = () => {
         ]
     const email = ref('')
     const password = ref('')
+    const first_name = ref('')
+    const last_name = ref('')
+    const phone = ref('')
+    const message = ref('')
+
+
     const submit = async () => {
         axios.defaults.headers.common['Authorization'] = ""  
         localStorage.removeItem('token')
@@ -30,7 +36,7 @@ const Auth = () => {
                 const token = res.data.token
                 store.commit('setToken', token)
                 axios.defaults.headers.common['Authorization'] = "Token " + token
-                localStorage.removeItem('token',token)
+                
                 localStorage.setItem('token', token)
                 router.push("/accounts/dashboard")
             })
@@ -43,6 +49,33 @@ const Auth = () => {
 
   }
   const form = ref(null)
+
+  const submitReg = async () =>{
+    const { valid } = await form.value.validate()
+
+    if (valid){
+        const data = {
+            email:email.value,
+            first_name:first_name.value,
+            last_name:last_name.value,
+            phone:phone.value,
+            password:password.value
+        }
+
+        await axios 
+            .post('accounts/signup',data)
+            .then(res =>{
+                message.value = res.data.message
+                console.log(res.data)
+                if (res.status == 201){
+                    router.push("/login")
+                }
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+    }
+  }
 
   const logout = async () =>{
     await axios
@@ -65,7 +98,11 @@ const Auth = () => {
         password,
         form,
         submit,
-        logout
+        logout,
+        phone,
+        first_name,
+        last_name,
+        submitReg
     };
 }
  

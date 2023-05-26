@@ -17,6 +17,7 @@ const addProduct = () =>{
     const  mainImage = ref(null)
     const subImages = ref([])
     const message = ref('')
+    const description = ref('')
 
 
    const submitForm = async () =>{
@@ -25,6 +26,7 @@ const addProduct = () =>{
         formData.append('price',price.value)
         formData.append('product_category', category.value.ID)
         formData.append('mainImage',mainImage.value)
+        formData.append('description',description.value)
         subImages.value.forEach((file) => {
             formData.append("subImages", file);
           });
@@ -70,7 +72,8 @@ const addProduct = () =>{
         price,
         submitForm,
         handleMainImagesUpload,
-        handleSubImagesUpload
+        handleSubImagesUpload,
+        description
     }
 }
 

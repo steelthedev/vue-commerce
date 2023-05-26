@@ -8,11 +8,13 @@
                 </div>
                 <div class="product-words">
                     <div class="product-title">
+                        <router-link :to="{name:'product', params:{id:product.ID} }" class="link">
                         <h2 class="text-h6">{{product.title}}</h2>
-                        <span class="text-subtitle-2 font-weight-light">Table with purifier, stained veneer/black</span>
+                        <span class="text-h6 font-weight-medium">#{{product.price}}</span>
+                        </router-link>
                     </div>
                     <div class="product-button mt-2">
-                        <v-btn class="pa-4 align-content-center rounded-pill ad-btn text-none" elevation="0">Edit Product</v-btn>
+                        <v-btn class="pa-4 align-content-center rounded-pill ad-btn text-none" elevation="0">Add to Cart </v-btn>
                     </div>
                 </div>
             </div>
@@ -40,4 +42,5 @@ export default {
     background: none;
     border: 1px solid;
 }
+
 </style>

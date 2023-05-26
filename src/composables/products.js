@@ -1,10 +1,12 @@
 import axios from "axios"
 import { ref } from "vue"
+import { useRoute, useRouter } from "vue-router"
 
 const Products = () =>{
 
 
     const products = ref([])
+    const product = ref({})
 
 
     const getProducts = async () =>{
@@ -25,7 +27,31 @@ const Products = () =>{
 
     }
 
-    return {products,getProducts}
+
+
+    const getSingleProduct = async () =>{
+           const route = useRoute()
+           const id = route.params.id
+           
+           console.log(id)
+           
+            
+        await axios
+            .get('products/get/' + id)
+            .then(response =>{
+              
+                product.value = response.data
+                console.log(product.value)
+            })
+            .catch(err =>{
+                console.log(
+                    err
+                )
+            })
+
+    }
+
+    return {products,getProducts,product,getSingleProduct}
 }
 
 export default Products;

@@ -5,6 +5,7 @@ import DashboardView from '../views/Dashboard/DashboardView.vue'
 import DashboardProductView from '../views/Dashboard/DashboardProductView.vue'
 import AddProductView from '../views/Dashboard/AddProductView.vue'
 import LoginView from '../views/LoginView.vue'
+import SignUpView from '../views/SignUpView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,12 @@ const router = createRouter({
       path:'/login',
       name:'login',
       component:LoginView
+    },
+
+    {
+      path:'/signup',
+      name:'signup',
+      component:SignUpView
     },
     
     {

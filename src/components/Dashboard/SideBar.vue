@@ -5,10 +5,13 @@
         </v-toolbar> -->
         <v-navigation-drawer elevation="0" expand-on-hover rail color="primary">
             <v-list class="mt-16" density="compact" nav>
-                <v-list-item title="Dashboard" class="mb-4" prepend-icon="mdi-view-dashboard-outline" value="dashboard"></v-list-item>
-                <v-list-item title="Products" class="mb-4" prepend-icon="mdi-basket" value="products"></v-list-item>
+                <router-link :to="{name:'dashboard-product'}" class="link">
+                    <v-list-item title="Dashboard" class="mb-4" prepend-icon="mdi-view-dashboard-outline" value="dashboard"></v-list-item>
+                </router-link>
+                               <v-list-item title="Products" class="mb-4" prepend-icon="mdi-basket" value="products"></v-list-item>
                 <v-list-item title="Categories" class="mb-4" prepend-icon="mdi-shape" value="categories"></v-list-item>
                 <v-list-item title="Orders" class="mb-4" prepend-icon="mdi-cart" value="Orders"></v-list-item>
+                <v-list-item title="Shop" class="mb-4" prepend-icon="mdi-store" value="Shop"></v-list-item>
                 
             </v-list>
 
@@ -32,5 +35,11 @@ export default {
 <style scoped>
 .v-list .v-list-item .v-list-item-title {
     font-size: 40px;
+}
+
+.link{
+    text-decoration: none;
+    text-transform: none;
+    color: #fff;
 }
 </style>
