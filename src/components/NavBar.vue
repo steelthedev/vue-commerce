@@ -2,7 +2,10 @@
   <v-toolbar class="bg-white mx-auto text-center text-uppercase font-weight-medium text-body-2" elevation="" color="primary">
 
     <div class="logo mx-7 text-none">
-      <h2>Sales</h2>
+      <router-link :to="{name:'home'}" class="link" >
+           <h2>Sales</h2>
+      </router-link>
+
     </div>
     <div class="middle text-uppercase mx-auto d-none d-sm-flex ">
       <span class="mx-7">Shops</span>
@@ -13,13 +16,40 @@
 
     <div class="mr-10 d-none d-sm-flex">
 
-      <span class="mx-7">
+      <div class="" v-if="this.$store.state.isAuthenticated">
+         <router-link :to="{name:'dashboard'}" class="link" >
+        <span class="mx-3">
         Account
         <v-icon icon="mdi-account-outline text-right"></v-icon>
       </span>
-      <span>
+      </router-link>
+
+      <router-link :to="{name:'dashboard'}" class="link" >
+        <span class="mx-4">
+        Logout
+      </span>
+        </router-link>
+      </div>
+     
+      <div class="" v-else>
+        <router-link :to="{name:'login'}" class="link" v-if="this.$store.state.isAuthenticated">
+        <span class="mx-7">
+        Login
+        <!-- <v-icon icon="mdi-account-outline text-right"></v-icon> -->
+      </span>
+      </router-link>
+          <router-link :to="{name:'signup'}" class="link" v-if="this.$store.state.isAuthenticated">
+        <span class="mx-7">
+        Signup
+        <!-- <v-icon icon="mdi-account-outline text-right"></v-icon> -->
+      </span>
+      </router-link>
+      </div>
+      
+      <span class="ml-4">
         Cart
         <v-icon end icon="mdi-cart-outline text-right"></v-icon>
+        {{cartLength}}
       </span>
     </div>
 
@@ -30,8 +60,16 @@
 <script>
 
 export default {
+  props:['cartLength'],
   setup() {
 
   },
+
 }
 </script>
+<style scoped>
+.link{
+  color: #fff;
+
+}
+</style>

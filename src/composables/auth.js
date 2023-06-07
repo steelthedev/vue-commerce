@@ -38,6 +38,7 @@ const Auth = () => {
                 axios.defaults.headers.common['Authorization'] = "Token " + token
                 
                 localStorage.setItem('token', token)
+              
                 router.push("/accounts/dashboard")
             })
             .catch(error =>{

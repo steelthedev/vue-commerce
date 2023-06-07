@@ -1,6 +1,4 @@
-<script setup>
-import SideBar from '../../components/Dashboard/SideBar.vue'
-</script>
+
 <template>
 <SideBar />
   <section class="home mt-4">
@@ -25,7 +23,7 @@ import SideBar from '../../components/Dashboard/SideBar.vue'
         
       
       </v-row>
-      <ProductList />
+      <ProductList :products="products"/>
       
     </v-container>
 
@@ -36,22 +34,15 @@ import SideBar from '../../components/Dashboard/SideBar.vue'
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import {onMounted } from 'vue';
 import ProductList from '../../components/Dashboard/ProductList.vue';
-import addProduct from '../../composables/Dashboard/addproduct.js'
-import Products from '../../composables/products';
-
-
-// Components
-
-
-export default defineComponent({
-  name: 'HomeView',
+import getProducts from '../../composables/Dashboard/getProducts.js'
+import SideBar from '../../components/Dashboard/SideBar.vue'
+export default{
 
   components: {
     ProductList,
-
-
+    SideBar
   },
    beforeRouteEnter(to, from, next) {
         to.meta.hideNavbar = true;
@@ -63,10 +54,17 @@ export default defineComponent({
         }
     },
     setup(){
+      
+      const {getUserProducts,products} = getProducts()
      
-   
-    }
-});
+     onMounted(()=>{
+      getUserProducts();
+     })
+
+      return {products}
+
+    },
+}
 </script>
 <style scoped>
 .btn-filter {

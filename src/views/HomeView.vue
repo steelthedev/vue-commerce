@@ -33,7 +33,7 @@
           <h1 class=" text-h4 font-weight-medium">Shop by Stores </h1>
         </div>
       </v-row>
-      <BrandList />
+      <BrandList :shops="shops" />
 
       <v-row>
         <div class="cat-title mt-4">
@@ -57,6 +57,7 @@ import { defineComponent, onMounted } from 'vue';
 import ProductList from '../components/ProductList.vue';
 import BrandList from '../components/BrandList.vue';
 import Products from '../composables/products'
+import Shops from '../composables/shops'
 // Components
 
 
@@ -71,10 +72,15 @@ export default defineComponent({
 
     onMounted(()=>{
       getProducts()
+      getShops()
     })
     const {products,getProducts} = Products()
+    const {shops,getShops} = Shops() 
 
-    return {products}
+    return {
+      products,
+      shops
+    }
   }
 });
 </script>

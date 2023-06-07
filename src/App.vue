@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <NavBar v-if="!$route.meta.hideNavbar" />
+      <NavBar v-if="!$route.meta.hideNavbar" :cartLength="cartTotalLength" />
       <router-view />
     </v-main>
   </v-app>
@@ -15,6 +15,14 @@ export default {
     NavBar
   },
   name: 'App',
+  data(){
+    return{
+      cart:{
+        items:[]
+      }
+      
+    }
+  },
   beforeCreate(){
     this.$store.commit('initializeStore')
 
@@ -35,15 +43,13 @@ export default {
       cartTotalLength(items) {
           let totalLength = 0
           for (let i = 0; i < this.cart.items.length; i++) {
-              totalLength += this.cart.items[i].quantity
+              totalLength += 1
           }
           return totalLength
       }
   },
 
 
-  data: () => ({
-    //
-  }),
+ 
 }
 </script>

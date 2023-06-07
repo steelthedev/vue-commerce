@@ -14,7 +14,7 @@
                         </router-link>
                     </div>
                     <div class="product-button mt-2">
-                        <v-btn class="pa-4 align-content-center rounded-pill ad-btn text-none" elevation="0">Add to Cart </v-btn>
+                        <v-btn class="pa-4 align-content-center rounded-pill ad-btn text-none" @click="addToCart(product)" elevation="0">Add to Cart </v-btn>
                     </div>
                 </div>
             </div>
@@ -25,10 +25,15 @@
     </v-row>
 </template>
 <script>
+import Cart from '../composables/cart'
 export default {
     props:['products'],
     setup() {
+        const {addToCart} = Cart()
 
+
+
+        return {addToCart}
     }
 }
 </script>

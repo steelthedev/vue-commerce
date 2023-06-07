@@ -35,11 +35,14 @@
 </template>
 
 <script>
+import Cart from '../composables/cart'
+
 export default {
     name: 'ProductBox',
     props: {
         product: Object
-    }
+    },
+
 }
 </script>
 

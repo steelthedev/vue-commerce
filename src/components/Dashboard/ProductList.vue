@@ -4,7 +4,7 @@
         <v-col md="4" lg="3" v-for="product in products" :key="product.id">
             <div class="product">
                 <div class="product-img">
-                    <img :src="product.main_image" alt="">
+                    <img :src="'http://127.0.0.1:8000/' + product.main_image" alt="">
                 </div>
                 <div class="product-words">
                     <div class="product-title">

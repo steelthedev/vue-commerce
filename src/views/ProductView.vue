@@ -51,7 +51,9 @@
                             <v-btn class="pa-7 mt-5 mb-5 align-content-center rounded-pill px-16 bg-primary"
                                 elevation="0">Buy Now</v-btn>
                             <v-btn class="pa-7 mt-5 mb-5 mx-5 align-content-center  rounded-pill px-16 cart-btn"
-                                elevation="0">Add
+                                elevation="0"
+                                @click="addToCart(product)"
+                                >Add
                                 to
                                 Cart</v-btn>
                         </div>
@@ -64,6 +66,7 @@
 <script>
 import { onMounted } from 'vue'
 import Products from '../composables/products'
+import Cart from '../composables/cart'
 
 export default {
     setup() {
@@ -72,7 +75,12 @@ export default {
         })
         const {getSingleProduct,product} = Products()
 
-        return {product}
+        
+		const {addToCart} = Cart()
+
+
+
+        return {product, addToCart}
     }
 }
 
