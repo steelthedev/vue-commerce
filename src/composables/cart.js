@@ -19,10 +19,26 @@ const Cart = () =>{
     store.commit('addToCart', item)
     console.log("success")
 
+ 
    
 }
+
+const clearCart = () =>{
+    if (store.state.cart.items.length){
+        store.commit('clearCart')
+        cartTotalLength = 0
+    }
+    console.log("cart is empty")
+}
+
+const updateCart = () =>{
+    localStorage.setItem('cart',JSON.stringify(store.cart))
+}
+
+
 return {
-    addToCart
+    addToCart,
+    clearCart,
 }
 }
 

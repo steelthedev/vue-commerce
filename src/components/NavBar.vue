@@ -47,9 +47,51 @@
       </div>
       
       <span class="ml-4">
-        Cart
+        <v-menu >
+          <template v-slot:activator="{ props }">
+  
+            <span v-bind="props">
+          Cart 
         <v-icon end icon="mdi-cart-outline text-right"></v-icon>
         {{cartLength}}
+            </span>
+       
+        
+        </template>
+         <v-list class="mt-5 pa-1" v-if="this.$store.state.cart.items.length">
+          <v-list-item v-for="(item,index) in this.$store.state.cart.items" :key="index">
+            <div class="d-flex pa-5">
+              <div class="img">
+                <img :src="'http://127.0.0.1:8000/'+item.product.main_image" alt="">
+              </div>
+              <div class="d-flex mt-2 mx-3">
+                <div class="product-details">
+                <h5 class="text-h6">{{item.product.title}}</h5>
+                <h6 class="text-subtitle-1">#{{item.product.price}}</h6>
+                </div>
+                
+                <v-icon icon="mdi-close-outline" class="mt-2 mx-4"></v-icon>
+              </div>
+
+              
+            </div>
+            
+          <v-divider></v-divider>
+          </v-list-item>
+           <div class="action mt-md-10 pa-6">
+            <div class="group-button">
+                <v-btn class="pa-7 mt-5 mb-5 align-content-center rounded-pill px-10 cart-btn "
+                    elevation="0" append-icon="mdi-trash-can-outline" @click="clearCart">clear cart</v-btn>
+                <v-btn class="pa-7 mt-5 mb-5 mx-5 align-content-center  rounded-pill px-10 bg-primary "
+                    elevation="0"
+                    @click="addToCart(product)"
+                    append-icon="mdi-arrow-right"
+                    >checkout</v-btn>
+            </div>
+           </div>
+         </v-list>
+        </v-menu>
+     
       </span>
     </div>
 
@@ -58,11 +100,15 @@
   </v-toolbar>
 </template>
 <script>
-
+import { mergeProps } from 'vue'
+import Cart from '../composables/cart'
 export default {
   props:['cartLength'],
-  setup() {
+  setup() { 
 
+    const {clearCart} = Cart()
+
+    return {mergeProps,clearCart}
   },
 
 }
@@ -71,5 +117,9 @@ export default {
 .link{
   color: #fff;
 
+}
+
+img{
+  width: 70px;
 }
 </style>
