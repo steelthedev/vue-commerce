@@ -78,15 +78,16 @@
             
           <v-divider></v-divider>
           </v-list-item>
-           <div class="action mt-md-10 pa-6">
+           <div class="action mt-md-4 pa-6">
             <div class="group-button">
                 <v-btn class="pa-7 mt-5 mb-5 align-content-center rounded-pill px-10 cart-btn "
                     elevation="0" append-icon="mdi-trash-can-outline" @click="clearCart">clear cart</v-btn>
+               <router-link :to="{name:'checkout'}" class="link">
                 <v-btn class="pa-7 mt-5 mb-5 mx-5 align-content-center  rounded-pill px-10 bg-primary "
                     elevation="0"
-                    @click="addToCart(product)"
                     append-icon="mdi-arrow-right"
                     >checkout</v-btn>
+                </router-link>
             </div>
            </div>
          </v-list>

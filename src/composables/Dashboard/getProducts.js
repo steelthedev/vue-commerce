@@ -1,5 +1,7 @@
 import axios from "axios";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+
+import router from "../../router"
 
 const getProducts = () =>{
 
@@ -21,10 +23,26 @@ const getProducts = () =>{
 
     }
 
+    const deleteProduct = async(id) =>{
+        
+        await axios
+        .post('/products/delete-product/' + id)
+        .then(res =>{
+            console.log(res.data)
+            router.push("/accounts/dashboard/products")
+  
+        })
+      
+     
+  
+       
+    }
+
 
     return {
         getUserProducts,
-        products
+        products,
+        deleteProduct
     }
 }
 

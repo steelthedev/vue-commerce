@@ -1,6 +1,6 @@
 import axios from "axios"
 import { ref } from "vue"
-import { useRoute, useRouter } from "vue-router"
+import { useRoute} from "vue-router"
 
 const Products = () =>{
 

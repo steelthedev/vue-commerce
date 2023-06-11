@@ -41,19 +41,17 @@ export default {
 
  computed: {
       cartTotalLength(items) {
-          // let totalLength = 0
-          // for (let i = 0; i < this.cart.items.length; i++) {
-          //     totalLength += 1
-          // }
-          // return totalLength
+    
 
           return this.cart.items.reduce((acc,curVal) =>{
             return acc += 1
           },0)
-      }
+      },
+
+
   },
 
-
+ }
  
-}
+
 </script>

@@ -37,6 +37,35 @@ export default createStore({
       }
       localStorage.setItem('cart', JSON.stringify(state.cart))
     },
+    removeFromCart(state,item){
+      const exists = state.cart.items.filter(i => i.product.ID === item.product.ID)
+      if(exists.length){
+        state.cart.items.pop(item)
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    increaseCart(state,item){
+      const exists = state.cart.items.filter(i => i.product.ID === item.product.ID)
+      if(exists.length){
+        exists[0].quantity += 1
+      }
+     
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    decreaseCart(state,item){
+      const exists = state.cart.items.filter(i => i.product.ID === item.product.ID)
+      if(exists.length){
+        exists[0].quantity -= 1
+        if (exists[0].quantity <= 0 ){
+          state.cart.items.pop(item)
+        }
+      }
+      else{
+        return
+      }
+     
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
     setIsLoading(state, status){
       state.isLoading = status
     },
@@ -49,7 +78,7 @@ export default createStore({
       state.isAuthenticated = false
   },
   clearCart(state) {
-    state.cart = { items: [] }
+    state.cart.items = []
     localStorage.setItem('cart', JSON.stringify(state.cart))
   },
     

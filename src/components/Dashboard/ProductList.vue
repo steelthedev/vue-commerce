@@ -1,8 +1,9 @@
 <template>
     <v-row class="justify-content-center mb-10">
 
-        <v-col md="4" lg="3" v-for="product in products" :key="product.id">
-            <div class="product">
+        <v-col md="4" lg="3" v-for="product in products" :key="product.ID">
+            <div class="product mt-4">
+                <v-icon icon="mdi-trash-can-outline" @click="deleteProduct(product.ID)" class="float-right" color="primary"></v-icon>
                 <div class="product-img">
                     <img :src="'http://127.0.0.1:8000/' + product.main_image" alt="">
                 </div>
@@ -22,10 +23,15 @@
     </v-row>
 </template>
 <script>
+import getProducts from '../../composables/Dashboard/getProducts'
+
 export default {
     props:['products'],
     setup() {
 
+        const {deleteProduct} = getProducts()
+
+        return {deleteProduct}
     }
 }
 </script>
